@@ -1,0 +1,72 @@
+
+php artisan make:migration create_media_news_table
+php artisan make:model MediaNews --migration
+php artisan make:model Category --migration
+php artisan make:model Event --migration
+php artisan make:model Vacancy --migration
+php artisan make:model UserEva --migration
+php artisan make:model UserToken --migration
+php artisan make:model Provider --migration
+
+php artisan make:model UserData
+php artisan make:model RoleHasPermission
+php artisan make:model ModelHasRole
+php artisan make:migration create_user_data_table --create=user_data
+
+php artisan make:controller Backend/CategoryController --resource
+php artisan make:controller Backend/EventController --resource
+php artisan make:controller Backend/VacancyController --resource
+php artisan make:controller Backend/ProviderController --resource
+
+php artisan livewire:datatable media-news-table --model=MediaNews
+php artisan make:datatable Backend/MediaNewsTable MediaNews
+php artisan make:datatable Backend/CategoryTable Category
+php artisan make:datatable Backend/EventTable Event
+php artisan make:datatable Backend/VacancyTable Vacancy
+php artisan make:datatable Backend/ProviderTable Provider
+
+php artisan make:request MediaNewsRequest
+php artisan make:request CategoryRequest
+php artisan make:request RegisterRequest
+php artisan make:request EventRequest
+php artisan make:request VacancyRequest
+
+
+php artisan make:resource MediaNewsResource
+php artisan make:resource MediaNewsCollection
+php artisan make:resource MediaNews --collection
+php artisan make:resource UserResource
+php artisan make:resource EventResource
+php artisan make:resource VacancyResource
+php artisan make:resource ProviderResource
+
+https://www.codegrepper.com/code-examples/php/laravel+faker+post+title
+composer require aalaap/faker-youtube
+
+php artisan make:factory VacancyFactory --model=Vacancy
+php artisan make:factory EventFactory --model=Event
+php artisan make:factory MediaNewsFactory --model=MediaNews
+
+php artisan make:seeder CategoriesTableSeeder
+php artisan make:seed VacancyTableSeeder
+php artisan make:seed EventTableSeeder
+php artisan make:seed MediaNewsTableSeeder
+
+sudo php artisan db:seed --class=CategoriesTableSeeder
+sudo php artisan db:seed --class=MajorTableSeeder
+sudo php artisan db:seed --class="Database\\Seeders\\Auth\\PermissionRoleSeeder"
+sudo php artisan db:seed --class=EventTableSeeder && \
+sudo php artisan db:seed --class=VacancyTableSeeder && \
+sudo php artisan db:seed --class=MediaNewsTableSeeder && \
+
+php artisan make:migration add_nim_to_alumni_table --table=alumni
+
+php artisan queue:table
+php artisan migrate
+php artisan queue:work
+php artisan make:job MediaBanner
+
+php artisan make:middleware ApiMiddleware
+
+php artisan make:mail WelcomeMail -m emails.welcome
+php artisan make:mail AuthMail

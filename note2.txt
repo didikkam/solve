@@ -1,0 +1,4 @@
+php artisan make:model Client
+php artisan make:model Timesheet
+php artisan make:controller Backend/TimesheetController --resource
+php artisan make:controller Backend/RecapController --resource
